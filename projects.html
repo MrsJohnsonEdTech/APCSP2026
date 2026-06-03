@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Nathan Kettel Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Game containers section */
+        .game-containers-section {
+            background: linear-gradient(180deg, rgba(22, 33, 62, 0.8) 0%, rgba(26, 95, 122, 0.8) 50%, rgba(15, 52, 96, 0.8) 100%);
+            padding: 40px 20px;
+        }
+
+        .game-containers-wrapper {
+            max-width: 1200px;
+            margin: 0 auto 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+
+        .tank-game-container {
+            width: 100%;
+            max-width: 470px;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(0, 200, 255, 0.5);
+            border: 3px solid #00c8ff;
+            transition: all 0.3s ease;
+        }
+
+        .tank-game-container:hover {
+            box-shadow: 0 0 40px rgba(0, 200, 255, 0.8), 0 0 60px rgba(0, 200, 255, 0.4);
+            transform: scale(1.02);
+        }
+
+        .tank-game-header {
+            background: linear-gradient(135deg, rgba(0, 200, 255, 0.2) 0%, rgba(0, 255, 136, 0.1) 100%);
+            padding: 20px;
+            border-bottom: 2px solid #00c8ff;
+        }
+
+        .tank-game-header h2 {
+            color: #00ff88;
+            margin: 0 0 10px 0;
+            font-size: 1.8rem;
+            text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+            font-weight: 700;
+        }
+
+        .tank-game-header p {
+            color: #e0e0e0;
+            margin: 0;
+            font-size: 0.95rem;
+            font-weight: 300;
+        }
+
+        .tank-game-iframe-wrapper {
+            position: relative;
+            width: 100%;
+            background: #1a1a1a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            min-height: 460px;
+        }
+
+        .tank-game-iframe-wrapper iframe {
+            width: 100%;
+            height: 460px;
+            border: none;
+            display: block;
+        }
+
+        .tank-game-controls {
+            background: linear-gradient(135deg, rgba(0, 200, 255, 0.15) 0%, rgba(0, 255, 136, 0.05) 100%);
+            padding: 20px;
+            border-top: 2px solid #00c8ff;
+            color: #e0e0e0;
+            font-size: 0.9rem;
+        }
+
+        .tank-game-controls h4 {
+            color: #00ff88;
+            margin: 0 0 10px 0;
+            text-shadow: 0 0 8px rgba(0, 255, 136, 0.4);
+            font-weight: 700;
+        }
+
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+        }
+
+        .control-set {
+            background: rgba(0, 200, 255, 0.1);
+            padding: 12px;
+            border-radius: 5px;
+            border-left: 3px solid #00ff88;
+            transition: all 0.3s ease;
+            font-weight: 300;
+        }
+
+        .control-set:hover {
+            background: rgba(0, 200, 255, 0.2);
+            transform: translateX(5px);
+        }
+
+        .control-set strong {
+            color: #00ff88;
+            font-weight: 700;
+        }
+
+        .control-text {
+            color: #e0e0e0;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        /* Project summary section */
+        .project-summary-section {
+            background: linear-gradient(180deg, rgba(22, 33, 62, 0.8) 0%, rgba(26, 95, 122, 0.8) 50%, rgba(15, 52, 96, 0.8) 100%);
+            padding: 60px 20px;
+        }
+
+        .project-summary {
+            max-width: 900px;
+            margin: 0 auto;
+            color: #e0e0e0;
+        }
+
+        .project-summary h2 {
+            color: #00ff88;
+            font-size: 2.2rem;
+            text-shadow: 0 0 15px rgba(0, 255, 136, 0.6);
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .project-summary p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .project-summary strong {
+            color: #00ff88;
+            font-weight: 700;
+        }
+
+        .growth-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .growth-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            transition: all 0.3s ease;
+            font-weight: 300;
+        }
+
+        .growth-list li:hover {
+            padding-left: 30px;
+            color: #00ff88;
+        }
+
+        .growth-list li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        .projects-intro {
+            text-align: center;
+            font-size: 1.1rem;
+            font-style: italic;
+            color: #b0b0b0;
+            font-weight: 300;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0, 255, 136, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .game-containers-wrapper {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .tank-game-container {
+                max-width: 100%;
+            }
+
+            .project-summary h2 {
+                font-size: 1.8rem;
+            }
+
+            .controls-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tank-game-header h2 {
+                font-size: 1.4rem;
+            }
+
+            .project-summary p {
+                font-size: 0.95rem;
+            }
+
+            .growth-list li {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">NK Portfolio</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="about.html" class="nav-link">About Me</a></li>
+                <li class="nav-item"><a href="projects.html" class="nav-link active">Projects</a></li>
+                <li class="nav-item"><a href="resume.html" class="nav-link">Resume</a></li>
+                <li class="nav-item"><a href="reflection.html" class="nav-link">Reflection</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="page-header">
+        <h1>My Projects</h1>
+        <p>Showcasing my programming skills and technical achievements</p>
+    </section>
+
+    <!-- Project Summary Section -->
+    <section class="project-summary-section">
+        <div class="project-summary">
+            <h2>My Development Journey Through Projects</h2>
+            
+            <p>These projects show my efforts, knowledge, and skills made visual through code. These projects made me think deeply and tested my problem solving capabilities. In each one, I had to come up with ideas, turn those ideas into python code, playtest them and make sure that they run smoothly and error free. It was quite the journey for some of them, but I really enjoyed it.</p>
+
+            <p><strong>What these projects taught me:</strong></p>
+            <ul class="growth-list">
+                <li><strong>Game Physics & Collision Detection:</strong> Understanding positions and real-time collision detection, demonstrated in Golf Game project</li>
+                <li><strong>Code You Can Build On:</strong> Good design decisions allow for more features to be added</li>
+                <li><strong>User Experience is Critical:</strong> The best code means nothing if users can't or won't use it</li>
+                <li><strong>Testing is Essential:</strong> Playtesting as you develop catches bugs early, helps understand project direction, and builds confidence</li>
+                <li><strong>Documentation Saves Time:</strong> Code complexity compounds quickly, but documenting helps you stay organized</li>
+                <li><strong>Debugging is a Skill:</strong> Learning effective debugging techniques is as important as learning languages</li>
+                <li><strong>Collaboration Improves Code:</strong> It's essential to have someone to turn to in case you get stuck</li>
+                <li><strong>Performance Matters:</strong> Optimization requires a lot of brain effort, but will be needed if you want anyone to be impressed</li>
+            </ul>
+            <p class="projects-intro">The following projects were written in object-oriented Python code using CMU CS Academy.</p>
+        </div>
+    </section>
+
+    <!-- Game Containers Section -->
+    <section class="game-containers-section">
+        <div class="game-containers-wrapper">
+            <!-- Tank Game Container -->
+            <div class="tank-game-container">
+                <div class="tank-game-header">
+                    <h2>Tank Battle Game</h2>
+                    <p>A 4-player competitive tank battle game inspired by Arras.io. Built with Python and CMU Graphics featuring real-time game physics and collision detection.</p>
+                </div>
+                <div class="tank-game-iframe-wrapper">
+                    <iframe src="https://academy.cs.cmu.edu/sharing/dimGrayElephant590868"></iframe>
+                </div>
+                <div class="tank-game-controls">
+                    <h4>Player Controls:</h4>
+                    <div class="controls-grid">
+                        <div class="control-set">
+                            <strong>Blue (P1):</strong> <span class="control-text">W/A/S/D move, E/R rotate, Q shoot</span>
+                        </div>
+                        <div class="control-set">
+                            <strong>Red (P2):</strong> <span class="control-text">Y/G/H/J move, U/I rotate, T shoot</span>
+                        </div>
+                        <div class="control-set">
+                            <strong>Green (P3):</strong> <span class="control-text">P/L/;/' move, [/] rotate, O shoot</span>
+                        </div>
+                        <div class="control-set">
+                            <strong>Pink (P4):</strong> <span class="control-text">Arrow keys move, ./? rotate, Enter shoot</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Golf Game Container -->
+            <div class="tank-game-container">
+                <div class="tank-game-header">
+                    <h2>Golf!</h2>
+                    <p>A 2D mini-golf inspired game demonstrating collision and movement physics. Use the three bars in the top-left to switch levels.</p>
+                </div>
+                <div class="tank-game-iframe-wrapper">
+                    <iframe src="https://academy.cs.cmu.edu/sharing/forestGreenPanda7667/embed"></iframe>
+                </div>
+                <div class="tank-game-controls">
+                    <h4>Controls:</h4>
+                    <div class="controls-grid">
+                        <div class="control-set">
+                            <strong>Direction:</strong> <span class="control-text">Left and Right arrow</span>
+                        </div>
+                        <div class="control-set">
+                            <strong>Power:</strong> <span class="control-text">Up and Down arrow</span>
+                        </div>
+                        <div class="control-set">
+                            <strong>Swing:</strong> <span class="control-text">Enter</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Geometry Dash Container -->
+            <div class="tank-game-container">
+                <div class="tank-game-header">
+                    <h2>Geometry Dash</h2>
+                    <p>Demonstrates moving objects, collision, images, groups, and procedures to create objects in Python.</p>
+                </div>
+                <div class="tank-game-iframe-wrapper">
+                    <iframe src="https://academy.cs.cmu.edu/sharing/crimsonRabbit728541/embed"></iframe>
+                </div>
+                <div class="tank-game-controls">
+                    <p class="control-text"><strong>Gameplay:</strong> Time your clicks to get through the course!</p>
+                </div>
+            </div>
+
+            <!-- Settlers of Catan Container -->
+            <div class="tank-game-container">
+                <div class="tank-game-header">
+                    <h2>Settlers of Catan</h2>
+                    <p>A demake of Settlers of Catan in Python demonstrating visual techniques like images, shapes, and dragging objects.</p>
+                </div>
+                <div class="tank-game-iframe-wrapper">
+                    <iframe src="https://academy.cs.cmu.edu/sharing/orangeRedAnt8890/embed"></iframe>
+                </div>
+                <div class="tank-game-controls">
+                    <p class="control-text"><strong>Gameplay:</strong> Follows similar Settlers of Catan rules, but with only settlements. Drag settlements onto corners of tiles to get resources depending on dice rolls.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Nathan Kettel. All rights reserved.</p>
+        <p><a href="https://github.com/nkettel" target="_blank">GitHub</a> | Portfolio for AP Computer Science</p>
+    </footer>
+</body>
+</html>
