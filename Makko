@@ -1,0 +1,137 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Makko</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+   
+
+    <header class="page-header">
+        <div class="container">
+            <h1>Makko Projects</h1>
+            <p>A showcase of my programming work and accomplishments</p>
+        </div>
+    </header>
+
+    <section class="content-section">
+        <div class="projects-carousel-container">
+            <button class="carousel-arrow carousel-arrow-left" onclick="previousProject()">‹</button>
+            
+            <div class="projects-carousel">
+                <div class="project-card active">
+                    <h3>Project 1: Portal Game</h3>
+                    <p class="tech">Python</p>
+                    <p class="description">A 2D randomly generated platformer where the user uses portals to move around through the stage.</p>
+                    <div style="display: flex; justify-content: center; width: 100%;">
+                        <iframe width="410" height="460"
+                           src="https://academy.cs.cmu.edu/sharing/coralGoldfish016624/embed"> 
+                         </iframe>
+                    </div>
+                    <h4>Challenges & Lessons:</h4>
+                    <p>The biggest challenge with this project was the collisions of the player and the world. It was really hard to make the portals work right and not break everything.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Project 2: Endless Shooting Game</h3>
+                    <p class="tech">Python</p>
+                    <p class="description">A 2D endless shooting game where the enemies get faster over time.</p>
+                    <div style="display: flex; justify-content: center; width: 100%;">
+                        <iframe width="410" height="460"
+                           src="https://academy.cs.cmu.edu/sharing/oliveLobster9516/embed"> 
+                         </iframe>
+                    </div>
+                    <h4>Challenges & Lessons:</h4>
+                    <p>It was really hard finding a fun, satisfying, and unique way to have the enemies move.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Project 3: 3D Hallway Game</h3>
+                    <p class="tech">Python</p>
+                    <p class="description">A 3D hallway 50/50 game using a 2D language to make a 3D experience.</p>
+                    <div style="display: flex; justify-content: center; width: 100%;">
+                        <iframe width="410" height="460"
+                           src="https://academy.cs.cmu.edu/sharing/goldenrodSpider9820/embed"> 
+                         </iframe>
+                    </div>
+                    <h4>Challenges & Lessons:</h4>
+                    <p>It was really hard to get the dimensions right and perspectives of the lines. I also had to make them all move at the appropriate speed in accordance with each other.</p>
+                </div>
+
+                <div class="project-card">
+                    <h3>Project 4: Pokemon Cynthia Battle</h3>
+                    <p class="tech">Python</p>
+                    <p class="description">A Pokemon generation 4 champion fight inspired setup simulator where you can cycle through different Pokemon.</p>
+                    <div style="display: flex; justify-content: center; width: 100%;">
+                        <iframe width="410" height="460"
+                           src="https://academy.cs.cmu.edu/sharing/thistleSnail1413/embed"> 
+                         </iframe>
+                    </div>
+                    <h4>Challenges & Lessons:</h4>
+                    <p>The hardest part of this project was importing the images of the Pokemon and making them the right size.</p>
+                </div>
+            </div>
+
+            <button class="carousel-arrow carousel-arrow-right" onclick="nextProject()">›</button>
+        </div>
+        
+        <div class="carousel-indicators">
+            <span class="indicator active" onclick="goToProject(0)"></span>
+            <span class="indicator" onclick="goToProject(1)"></span>
+            <span class="indicator" onclick="goToProject(2)"></span>
+            <span class="indicator" onclick="goToProject(3)"></span>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Makko Wankiiri-Hale Computer Science Portfolio. All rights reserved.</p>
+            <p>Built with HTML, CSS, and JavaScript | Hosted on GitHub Pages</p>
+        </div>
+    </footer>
+
+    <script>
+        let currentProject = 0;
+        const totalProjects = 4;
+
+        function showProject(index) {
+            const cards = document.querySelectorAll('.project-card');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            if (index >= totalProjects) {
+                currentProject = 0;
+            } else if (index < 0) {
+                currentProject = totalProjects - 1;
+            } else {
+                currentProject = index;
+            }
+            
+            cards.forEach(card => card.classList.remove('active'));
+            indicators.forEach(indicator => indicator.classList.remove('active'));
+            
+            cards[currentProject].classList.add('active');
+            indicators[currentProject].classList.add('active');
+        }
+
+        function nextProject() {
+            showProject(currentProject + 1);
+        }
+
+        function previousProject() {
+            showProject(currentProject - 1);
+        }
+
+        function goToProject(index) {
+            showProject(index);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextProject();
+            if (e.key === 'ArrowLeft') previousProject();
+        });
+    </script>
+</body>
+</html>
